@@ -1,0 +1,2619 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHITE COAT WARRIORS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* All CSS styles remain the same as in the original file */
+        :root {
+            --primary-blue: #1a56db;
+            --secondary-blue: #0ea5e9;
+            --dark-blue: #1e3a8a;
+            --light-blue: #dbeafe;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-teal: #14b8a6;
+            --accent-yellow: #fbbf24;
+            --accent-amber: #f59e0b;
+            --vibrant-blue: #3b82f6;
+            --vibrant-green: #22c55e;
+            --vibrant-purple: #a855f7;
+            --vibrant-pink: #e879f9;
+            --gradient-blue: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            --gradient-green: linear-gradient(135deg, var(--accent-green), #34d399);
+            --gradient-orange: linear-gradient(135deg, var(--accent-orange), #f97316);
+            --gradient-red: linear-gradient(135deg, var(--accent-red), #f87171);
+            --gradient-purple: linear-gradient(135deg, var(--accent-purple), #a78bfa);
+            --gradient-pink: linear-gradient(135deg, var(--accent-pink), #f472b6);
+            --gradient-teal: linear-gradient(135deg, var(--accent-teal), #2dd4bf);
+            --gradient-yellow: linear-gradient(135deg, var(--accent-yellow), #f59e0b);
+            --gradient-vibrant: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
+            --shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 2px 5px rgba(0, 0, 0, 0.08);
+            --shadow-xl: 0 5px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 6px;
+            color: #1e3a8a;
+            font-size: 8.25px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 9px;
+        }
+
+        .logo h1 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--dark-blue);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5px;
+            background: var(--gradient-vibrant);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo p {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.525rem;
+        }
+
+        .page {
+            background: white;
+            border-radius: 9px;
+            padding: 9px;
+            box-shadow: var(--shadow-xl);
+            width: 100%;
+            display: none;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            backdrop-filter: blur(10px);
+        }
+
+        .active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .promo-banner {
+            background: var(--gradient-vibrant);
+            color: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            margin-bottom: 11.25px;
+            text-align: center;
+            font-size: 0.45rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+        }
+
+        .promo-banner h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .promo-banner p {
+            line-height: 1.4;
+            text-align: justify;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-group {
+            margin-bottom: 6px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 1.5px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            font-size: 0.525rem;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 4.5px 6.75px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            font-size: 0.525rem;
+            background: #f8fafc;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(26, 86, 219, 0.15);
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+        .password-container .form-input {
+            padding-right: 22.5px;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 7.5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-blue);
+            font-size: 0.525rem;
+            cursor: pointer;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4.5px 7.5px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            gap: 3px;
+            width: 100%;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(26, 86, 219, 0.2);
+        }
+
+        .btn-contact {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(37, 211, 102, 0.2);
+        }
+
+        .btn-purple {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-purple:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(139, 92, 246, 0.2);
+        }
+
+        .btn-red {
+            background: var(--gradient-red);
+            color: white;
+        }
+
+        .btn-red:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+        }
+
+        .btn-orange {
+            background: var(--gradient-orange);
+            color: white;
+        }
+
+        .btn-orange:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+        }
+
+        .error-box {
+            background: #fee2e2;
+            color: var(--accent-red);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-red);
+        }
+
+        .success-box {
+            background: #d1fae5;
+            color: var(--accent-green);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-green);
+        }
+
+        .notification-box {
+            background: #fef3c7;
+            color: #d97706;
+            padding: 7.5px;
+            border-radius: 4.5px;
+            margin-top: 7.5px;
+            font-weight: 600;
+            font-size: 0.525rem;
+            text-align: center;
+            border-left: 3px solid #f59e0b;
+        }
+
+        .quiz-notification {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            box-shadow: var(--shadow-xl);
+            z-index: 1000;
+            display: none;
+            max-width: 225px;
+            border-left: 3.75px solid var(--accent-green);
+            animation: slideInRight 0.3s ease;
+            transform: translateX(100%);
+        }
+
+        .quiz-notification.show {
+            display: block;
+            transform: translateX(0);
+        }
+
+        .quiz-notification.warning {
+            border-left-color: var(--accent-orange);
+        }
+
+        .quiz-notification.error {
+            border-left-color: var(--accent-red);
+        }
+
+        .quiz-notification-content {
+            display: flex;
+            flex-direction: column;
+            gap: 7.5px;
+        }
+
+        .quiz-notification-title {
+            font-weight: 700;
+            font-size: 0.6rem;
+            color: var(--dark-blue);
+        }
+
+        .quiz-notification-message {
+            font-size: 0.525rem;
+            color: #4b5563;
+        }
+
+        .quiz-notification-actions {
+            display: flex;
+            gap: 6px;
+            justify-content: flex-end;
+        }
+
+        .quiz-notification-btn {
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 0.4875rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .quiz-notification-btn.primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .quiz-notification-btn.secondary {
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .main-page-buttons {
+            display: grid;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-access-section {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+            padding-bottom: 4.5px;
+            border-bottom: 1.5px solid var(--light-blue);
+        }
+
+        .quiz-title-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2.25px;
+            width: 80%;
+        }
+
+        .quiz-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            font-size: 0.525rem;
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+
+        .timer-container {
+            display: flex;
+            gap: 4.5px;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .timer, .question-timer {
+            background: var(--gradient-blue);
+            color: white;
+            padding: 2.25px 4.5px;
+            border-radius: 7.5px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            box-shadow: var(--shadow);
+            white-space: nowrap;
+        }
+
+        .timer.total-timer {
+            background: var(--gradient-orange);
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 4.5px;
+            background: #e5e7eb;
+            border-radius: 2.25px;
+            overflow: hidden;
+            margin-bottom: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 2.25px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        .question-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(10.5px, 1fr));
+            gap: 2.25px;
+            margin-bottom: 6px;
+        }
+
+        .question-nav-item {
+            width: 10.5px;
+            height: 10.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2.25px;
+            font-weight: 700;
+            font-size: 0.375rem;
+            cursor: pointer;
+            background: white;
+            border: 1.5px solid var(--light-blue);
+            transition: all 0.2s;
+        }
+
+        .question-nav-item.current {
+            background: var(--gradient-vibrant);
+            color: white;
+            border-color: var(--primary-blue);
+            transform: scale(1.1);
+        }
+
+        .question-nav-item.solved {
+            background: var(--gradient-green);
+            color: white;
+            border-color: var(--accent-green);
+        }
+
+        .question-nav-item.visited {
+            background: var(--gradient-orange);
+            color: white;
+            border-color: var(--accent-orange);
+        }
+
+        .question-container {
+            margin-bottom: 6px;
+        }
+
+        .question-text {
+            font-size: 0.5625rem;
+            font-weight: 700;
+            margin-bottom: 4.5px;
+            color: var(--dark-blue);
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3px;
+            margin-bottom: 6px;
+        }
+
+        .option {
+            padding: 3.75px 6px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+            background: #f8fafc;
+            font-size: 0.525rem;
+            position: relative;
+        }
+
+        .option:hover {
+            border-color: var(--primary-blue);
+            background: #e0f2fe;
+            transform: translateY(-1px);
+        }
+
+        .option.selected {
+            border-color: var(--primary-blue);
+            background: #dbeafe;
+        }
+
+        .option.correct {
+            border-color: var(--accent-green);
+            background: #d1fae5;
+        }
+
+        .option.incorrect {
+            border-color: var(--accent-red);
+            background: #fee2e2;
+        }
+
+        .option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .reasoning {
+            background: #f8fafc;
+            border-radius: 3.75px;
+            padding: 6px;
+            margin-top: 6px;
+            display: none;
+            border-left: 2.25px solid var(--primary-blue);
+            font-size: 0.525rem;
+        }
+
+        .reasoning-title {
+            font-weight: 700;
+            margin-bottom: 3px;
+            color: var(--dark-blue);
+            font-size: 0.5625rem;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 9px;
+        }
+
+        .nav-btn {
+            padding: 3.75px 5.25px;
+            border-radius: 3.75px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            font-size: 0.525rem;
+            display: flex;
+            align-items: center;
+            gap: 2.25px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            color: white;
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+            color: white;
+        }
+
+        .btn-reasoning {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-reasoning.disabled {
+            background: #dc3545;
+            color: white;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .btn-reasoning.disabled:hover {
+            background: #dc3545;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-submit {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .results-header-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3.75px;
+            margin-bottom: 9px;
+        }
+
+        .results-header-buttons .btn {
+            padding: 3px 4.5px;
+            font-size: 0.4875rem;
+            width: 100%;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #f8fafc, #e0f2fe);
+            border-radius: 6px;
+            padding: 9px;
+            text-align: center;
+            margin-bottom: 9px;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .result-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-vibrant);
+        }
+
+        .result-card h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: var(--dark-blue);
+        }
+
+        .result-card table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.525rem;
+            margin-top: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .result-card th, .result-card td {
+            padding: 3.75px;
+            border: 1px solid #dbeafe;
+            text-align: left;
+        }
+
+        .result-card th {
+            background-color: var(--light-blue);
+            font-weight: 600;
+        }
+
+        .result-card td {
+            background-color: #f8fafc;
+        }
+
+        .result-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 4.5px;
+            margin-top: 9px;
+        }
+
+        .all-mcqs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 11.25px;
+        }
+
+        .all-mcq-item {
+            padding: 7.5px;
+            border: 1px solid var(--light-blue);
+            border-radius: 6px;
+            background: #f8fafc;
+            position: relative;
+        }
+
+        .all-mcq-item .question-text {
+            color: var(--dark-blue);
+            font-size: 0.6rem;
+            font-weight: 700;
+        }
+
+        .all-mcq-options {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 4.5px;
+        }
+
+        .all-mcq-option {
+            font-size: 0.525rem;
+            padding: 3px 4.5px;
+            border-radius: 3px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .all-mcq-option.correct {
+            background: #d1fae5;
+            color: var(--accent-green);
+            font-weight: 600;
+            border-color: #a7f3d0;
+        }
+
+        .all-mcq-reasoning {
+            margin-top: 6px;
+            font-size: 0.525rem;
+            color: #4b5563;
+            padding: 6px;
+            background: #f8fafc;
+            border-radius: 3px;
+            border-left: 2.25px solid var(--primary-blue);
+        }
+
+        .all-mcq-reasoning strong {
+            color: var(--dark-blue);
+        }
+
+        .quick-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 9px;
+            gap: 6px;
+        }
+
+        .stat-card {
+            flex: 1;
+            background: white;
+            border-radius: 4.5px;
+            padding: 6px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 2px solid var(--primary-blue);
+        }
+
+        .stat-card.correct {
+            border-top-color: var(--accent-green);
+        }
+
+        .stat-card.incorrect {
+            border-top-color: var(--accent-red);
+        }
+
+        .stat-card.unanswered {
+            border-top-color: var(--accent-orange);
+        }
+
+        .stat-value {
+            font-size: 0.9rem;
+            font-weight: 800;
+            margin-bottom: 1.5px;
+        }
+
+        .stat-label {
+            font-size: 0.4875rem;
+            font-weight: 600;
+            color: #6b7280;
+        }
+
+        .performance-meter {
+            width: 100%;
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 6px 0;
+        }
+
+        .performance-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        @media (max-width: 768px) {
+            .quiz-header {
+                flex-direction: column;
+                gap: 4.5px;
+                align-items: flex-start;
+            }
+            
+            .navigation-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .timer-container {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-top: 3.75px;
+                justify-content: flex-end;
+                width: 100%;
+            }
+            
+            .quiz-title-container {
+                width: 100%;
+            }
+            
+            .result-actions {
+                flex-direction: column;
+            }
+            
+            .promo-banner {
+                padding: 9px;
+            }
+            
+            .promo-banner h2 {
+                font-size: 0.6rem;
+            }
+            
+            .promo-banner p {
+                font-size: 0.4125rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-notification" id="quiz-notification">
+        <div class="quiz-notification-content">
+            <div class="quiz-notification-title" id="notification-title">Quiz Progress Found</div>
+            <div class="quiz-notification-message" id="notification-message">You have an unfinished quiz. Do you want to continue where you left off?</div>
+            <div class="quiz-notification-actions">
+                <button class="quiz-notification-btn secondary" id="notification-no">Start Fresh</button>
+                <button class="quiz-notification-btn primary" id="notification-yes">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="logo">
+            <h1>WHITE COAT WARRIORS</h1>
+            <p>Excellence in Educational Assessment</p>
+        </div>
+
+        <div id="signin-page" class="page active">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-lock"></i> Access Test</h2>
+            <p>Sign in or use your access code</p>
+            
+            <div class="main-page-buttons">
+                <button class="btn btn-primary" onclick="showQuizAccessForm()">
+                    <i class="fas fa-key"></i>
+                    <span>Sign In with Quiz Access Code</span>
+                </button>
+                <button class="btn btn-primary" onclick="showRegistrationPage()">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Sign Up to Get Quiz Access</span>
+                </button>
+                <button class="btn btn-purple" onclick="showDeveloperAccessForm()">
+                    <i class="fas fa-code"></i>
+                    <span>Developer Access</span>
+                </button>
+            </div>
+            
+            <div id="developer-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-user-secret"></i> Developer Login</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="developerPassword" class="form-input" placeholder="Enter the Developer Password">
+                    <i class="fas fa-eye-slash input-icon" id="toggleDeveloperPassword"></i>
+                </div>
+                <button class="btn btn-purple" onclick="checkDeveloperPassword()">
+                    <span>Log In</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="dev-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid developer password.
+                </div>
+            </div>
+            
+            <div id="quiz-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-key"></i> Enter Quiz Access Code</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="quizAccessCode" class="form-input" placeholder="Enter your 12-Digit Quiz Access Code here">
+                    <i class="fas fa-eye-slash input-icon" id="toggleQuizAccessCode"></i>
+                </div>
+                <button class="btn btn-primary" onclick="accessQuiz(document.getElementById('quizAccessCode').value)">
+                    <span>Access Quiz</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="quiz-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid quiz access code.
+                </div>
+            </div>
+            
+        </div>
+
+        <div id="registration-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-user-edit"></i> Student Registration</h2>
+            <p>Please provide your details to register</p>
+            
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user"></i> Student Name</label>
+                <input type="text" id="studentName" class="form-input" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user-friends"></i> Father Name</label>
+                <input type="text" id="fatherName" class="form-input" placeholder="Enter your father's name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-envelope"></i> Email Address</label>
+                <input type="email" id="email" class="form-input" placeholder="Enter your email address">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-phone"></i> Mobile Number (WhatsApp)</label>
+                <input type="tel" id="mobile" class="form-input" placeholder="+92XXXXXXXXXX">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-city"></i> City / District</label>
+                <input type="text" id="city" class="form-input" placeholder="Enter your city/district">
+            </div>
+            <button class="btn btn-primary" onclick="handleRegistration()">
+                <span>Submit to Get Access to Quiz</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="btn btn-red" style="margin-top: 3.75px;" onclick="showPage('signin-page')">
+                <i class="fas fa-chevron-left"></i> Back to Home
+            </button>
+        </div>
+
+        <div id="quiz-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+
+            <div class="quiz-header">
+                <div class="quiz-title-container">
+                    <h2 id="quiz-title"></h2>
+                    <div class="quiz-info">
+                        <span><i class="fas fa-book"></i> Subject: <span id="quiz-subject">English Grammar</span></span>
+                        <span><i class="fas fa-clock"></i> Per MCQ: <span id="per-mcq-time">1</span> Minute</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timer-container">
+                <div class="timer" id="question-timer">60</div>
+                <div class="timer total-timer" id="timer">40:00</div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="quiz-progress"></div>
+            </div>
+
+            <div class="question-nav" id="question-nav"></div>
+            
+            <div class="question-container">
+                <div class="question-text" id="question-text"></div>
+                <div class="options-container" id="options-container"></div>
+                <div class="reasoning" id="reasoning">
+                    <div class="reasoning-title"><i class="fas fa-lightbulb"></i> Explanation:</div>
+                    <div id="reasoning-text"></div>
+                </div>
+            </div>
+            
+            <div class="navigation-buttons">
+                <button class="nav-btn btn-back" onclick="navigateQuestion('prev')">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <button class="nav-btn btn-next" onclick="navigateQuestion('next')">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="nav-btn btn-reasoning disabled" id="reasoning-btn" onclick="toggleReasoning()">
+                    <i class="fas fa-lightbulb"></i> Reasoning
+                </button>
+                <button class="nav-btn btn-submit" onclick="submitTest()">
+                    Submit <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="results-page" class="page">
+            <div class="results-header-buttons">
+                <a id="website-link" href="#" target="_blank" class="btn btn-primary"><i class="fas fa-globe"></i> Website</a>
+                <a id="whatsapp-contact-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Whatsapp Contact</a>
+                <a id="whatsapp-community-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fas fa-users"></i> Whatsapp Community</a>
+            </div>
+            
+            <div class="quick-stats">
+                <div class="stat-card correct">
+                    <div class="stat-value" id="correct-count">0</div>
+                    <div class="stat-label">Correct</div>
+                </div>
+                <div class="stat-card incorrect">
+                    <div class="stat-value" id="incorrect-count">0</div>
+                    <div class="stat-label">Incorrect</div>
+                </div>
+                <div class="stat-card unanswered">
+                    <div class="stat-value" id="unanswered-count">0</div>
+                    <div class="stat-label">Unanswered</div>
+                </div>
+            </div>
+            
+            <div class="performance-meter">
+                <div class="performance-fill" id="performance-fill"></div>
+            </div>
+            
+            <div class="result-card">
+                <h2><i class="fas fa-user-graduate"></i> Student Information</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-info-table"></tbody>
+                </table>
+            </div>
+
+            <div class="result-card">
+                <h2><i class="fas fa-chart-bar"></i> Test Results</h2>
+                <table>
+                    <tbody id="quiz-results-table"></tbody>
+                </table>
+            </div>
+            
+            <div class="result-actions">
+                <button class="btn btn-primary" onclick="restartTest()">
+                    <i class="fas fa-redo"></i> Retake Full Test
+                </button>
+                <button class="btn btn-primary" onclick="retakeIncorrect()">
+                    <i class="fas fa-bolt"></i> Retake Incorrect Questions
+                </button>
+                <button class="btn btn-primary" onclick="viewAllMcqs()">
+                    <i class="fas fa-clipboard-list"></i> View All MCQs
+                </button>
+            </div>
+        </div>
+
+        <div id="all-mcqs-page" class="page">
+            <h2><i class="fas fa-list-alt"></i> All MCQs and Solutions</h2>
+            <div class="all-mcqs-list" id="all-mcqs-list"></div>
+            <button class="btn btn-primary" onclick="showPage('results-page')">
+                <i class="fas fa-arrow-left"></i> Back to Results
+            </button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html><script>// ***************************************************************
+// !! IMPORTANT: GOOGLE APPS SCRIPT URL FOR DATA LOGGING !!
+const SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxH08_vQhw7nqJCy3igwm70zXI2Mwau8CvcIeXdZMF2dFm9bPfgWtP6En4GQZGKte7c/exec';
+// ***************************************************************
+
+// Quiz Data
+const quizData_WCW_BIO_0015 = [
+    {
+        question: "A cellular event requiring precise chromosome segregation would be severely compromised by a non-functional primary constriction. Which structure is being referred to?",
+        options: [
+            "Kinetochore",
+            "Centromere",
+            "Nucleolar Organizer",
+            "Chromatid"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory that the centromere is the primary constriction essential for chromosome movement during cell division, acting as the attachment site for spindle microtubules, thus directly impacting segregation."
+    },
+    {
+        question: "In a hypothetical organism, its genetic material is found dispersed within the cytoplasm, and its reproduction occurs via binary fission. This organism is classified as:",
+        options: [
+            "A eukaryotic fungus",
+            "A prokaryotic bacterium",
+            "A plant cell with simplified structure",
+            "An animal cell undergoing abnormal division"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory that prokaryotic cells (like bacteria) lack a definite membrane-bound nucleus, dispersing DNA in the cytoplasm, and divide by binary fission."
+    },
+    {
+        question: "Selective transport of large macromolecules between the nucleus and cytoplasm relies on specialized proteins embedded in the nuclear envelope. These proteins are known as:",
+        options: [
+            "Histones",
+            "Ribophorins",
+            "Nucleoporins",
+            "Porins"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that nuclear pores, which regulate nucleo-cytoplasmic exchange, are composed of specialized transport proteins called nucleoporins, handling larger molecules with specific signal sequences."
+    },
+    {
+        question: "A non-membranous nuclear structure that dynamically appears and disappears with the cell cycle, and is central to ribosomal component assembly, is the:",
+        options: [
+            "Nucleoplasm",
+            "Chromatin",
+            "Nucleolus",
+            "Nuclear envelope"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the nucleolus is a non-membrane-bound structure that appears during interphase and disappears during cell division, primarily involved in ribosome construction."
+    },
+    {
+        question: "Should a cell require a sudden surge in ATP production from the Krebs cycle, which mitochondrial compartment would experience the most immediate increase in enzymatic activity?",
+        options: [
+            "Outer membrane",
+            "Intermembrane space",
+            "Inner membrane",
+            "Mitochondrial matrix"
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mentioned in Textbook theory that Krebs cycle enzymes are located in the mitochondrial matrix, directly responsible for the cycle's reactions that contribute to ATP generation."
+    },
+    {
+        question: "The presence of a small, circular DNA molecule and 70S ribosomes within an organelle strongly supports a hypothesis regarding its evolutionary origin. This hypothesis is:",
+        options: [
+            "Autogenous model",
+            "Endosymbiosis theory",
+            "Invagination theory",
+            "Nuclear envelope budding"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory that the endosymbiosis theory is supported by mitochondria's similarities with bacteria, including their small circular DNA and 70S ribosomes, suggesting an independent origin."
+    },
+    {
+        question: "During the processing of cellular secretions, new cisternae are formed by the fusion of vesicles from the smooth ER at a specific face of the Golgi complex. This face is known as the:",
+        options: [
+            "Maturing face",
+            "Trans-face",
+            "Cis-face",
+            "Exiting face"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the cis-face (forming face) of the Golgi complex is where new cisternae are formed by the fusion of vesicles from the smooth ER."
+    },
+    {
+        question: "A cell specializing in the abundant synthesis of proteins destined for secretion would extensively utilize which organelle's specific sub-type?",
+        options: [
+            "Smooth Endoplasmic Reticulum",
+            "Mitochondrial matrix",
+            "Rough Endoplasmic Reticulum",
+            "Golgi Trans-face"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the Rough Endoplasmic Reticulum (RER) has ribosomes attached, making it primarily involved in protein synthesis and thus crucial for cells with high secretory demands."
+    },
+    {
+        question: "Liver cells are highly efficient at detoxifying various substances. Which organelle sub-type would be especially abundant and active in these cells?",
+        options: [
+            "Rough Endoplasmic Reticulum",
+            "Mitochondrial inner membrane",
+            "Smooth Endoplasmic Reticulum",
+            "Golgi cis-face"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the Smooth Endoplasmic Reticulum (SER) functions in the detoxification of drugs and poisons, particularly in liver cells."
+    },
+    {
+        question: "The internal compartment of mitochondria, housing its own genetic material and ribosomal machinery, is termed the:",
+        options: [
+            "Intermembrane space",
+            "Cristae lumen",
+            "Outer mitochondrial space",
+            "Mitochondrial matrix"
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mentioned in Textbook theory that the mitochondrial matrix is the jelly-like material enclosed by the inner membrane, containing small circular DNA and 70S ribosomes."
+    },
+    {
+        question: "During cell division, a failure in kinetochore formation would directly impede which crucial process?",
+        options: [
+            "DNA replication",
+            "Sister chromatid separation",
+            "Nuclear envelope breakdown",
+            "Cytokinesis"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory that kinetochores are protein complexes on the centromere serving as attachment points for individual microtubules, which are essential for pulling sister chromatids apart during anaphase."
+    },
+    {
+        question: "Which of the following cellular features is unique to eukaryotes and absent in prokaryotes?",
+        options: [
+            "Cell membrane",
+            "DNA",
+            "Ribosomes",
+            "Endoplasmic Reticulum"
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mentioned in Textbook theory that eukaryotic cells possess an endoplasmic reticulum, which is absent in prokaryotic cells, making it a distinguishing feature."
+    },
+    {
+        question: "A molecule destined for nuclear import from the cytoplasm requires a specific signal sequence and the assistance of nucleoporins. This implies the molecule is:",
+        options: [
+            "A small ion",
+            "A lipid-soluble vitamin",
+            "A large protein",
+            "A simple sugar"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that large molecules require specific signal sequences and nucleoporins for transport through nuclear pores, while small molecules diffuse freely."
+    },
+    {
+        question: "Within the nucleoplasm, an abundance of Mg ions would primarily support the activity of which class of enzymes?",
+        options: [
+            "Proteases",
+            "Lipases",
+            "Polymerases",
+            "Glycosidases"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the nucleoplasm contains metal ions (Mg) essential for DNA and RNA synthesis, implying their role in supporting polymerase activity."
+    },
+    {
+        question: "The folding of the inner mitochondrial membrane into cristae is critical for maximizing which specific cellular process?",
+        options: [
+            "Krebs cycle substrate binding",
+            "Electron transport chain efficiency",
+            "Mitochondrial DNA replication",
+            "Protein synthesis by 70S ribosomes"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory that the inner mitochondrial membrane is folded inwards to form cristae, which increase surface area and contain electron carriers and ATP synthase (F0-F1 particles), thus enhancing electron transport chain efficiency."
+    },
+    {
+        question: "Considering mitochondrial maternal inheritance, a mutation in mitochondrial DNA (mtDNA) would be transmitted from:",
+        options: [
+            "Father to all offspring",
+            "Mother to all offspring",
+            "Father only to sons",
+            "Mother only to daughters"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory that mitochondria in a fertilized egg are exclusively derived from the mother, meaning mtDNA mutations would be transmitted from mother to all offspring."
+    },
+    {
+        question: "Lysosomes are known to digest excess or damaged organelles. This mechanism is crucial for the turnover of which specific organelle when present in surplus?",
+        options: [
+            "Nucleoli",
+            "Mitochondria",
+            "Golgi cisternae",
+            "Rough ER ribosomes"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory that excess mitochondria are digested by lysosomes."
+    },
+    {
+        question: "The Golgi complex contributes to cellular identity by forming specific conjugated molecules. These include:",
+        options: [
+            "Phospholipids and steroids",
+            "DNA and RNA",
+            "Glycoproteins and lipoproteins",
+            "ATP and NADH"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the Golgi complex is involved in the formation of conjugated molecules such as glycoproteins and lipoproteins."
+    },
+    {
+        question: "A cell needs to rapidly synthesize a large quantity of steroid hormones. Which organelle would be extensively developed to meet this demand?",
+        options: [
+            "Rough Endoplasmic Reticulum",
+            "Nucleolus",
+            "Smooth Endoplasmic Reticulum",
+            "Mitochondria"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the Smooth Endoplasmic Reticulum (SER) functions in the synthesis of lipids, including steroids, making it crucial for cells producing these hormones."
+    },
+    {
+        question: "In a metabolically active muscle cell, the sarcoplasmic reticulum, a specialized form of ER, would primarily store which ion crucial for contraction?",
+        options: [
+            "Sodium",
+            "Potassium",
+            "Calcium",
+            "Magnesium"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the Smooth Endoplasmic Reticulum (SER) is involved in the storage of calcium ions, which trigger muscle contraction."
+    },
+    {
+        question: "The transformation of thin, thread-like chromatin into condensed, visible structures occurs primarily during which cellular phase?",
+        options: [
+            "Interphase",
+            "Cell division",
+            "Transcription",
+            "Translation"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory that chromatin condenses and coils to form visible chromosomes during cell division, whereas it exists as a thin network during interphase."
+    },
+    {
+        question: "A defining characteristic separating eukaryotic cells from prokaryotic cells is the absence of which feature in the latter?",
+        options: [
+            "Plasma membrane",
+            "Cytoplasm",
+            "Membrane-bound organelles",
+            "Genetic material"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that prokaryotic cells lack membrane-bound organelles, while eukaryotic cells possess them, making this a key distinction."
+    },
+    {
+        question: "Which of the following human cells naturally lacks a nucleus?",
+        options: [
+            "Liver cell",
+            "Neuron",
+            "Red blood cell",
+            "White blood cell"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory (Science Titbit) that red blood cells (humans) lack a nucleus."
+    },
+    {
+        question: "The peripheral granular area of the nucleolus is primarily composed of:",
+        options: [
+            "rDNA templates",
+            "Ribosomal subunits",
+            "Histone proteins",
+            "mRNA molecules"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory that the nucleolus consists of a peripheral granular area composed of ribosomal subunits."
+    },
+    {
+        question: "The mitochondrial inner membrane is distinct from the outer membrane due to its:",
+        options: [
+            "Permeability to large molecules",
+            "Lack of porins",
+            "Smooth, unfolded structure",
+            "Presence of ATP synthase"
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mentioned in Textbook theory that the inner mitochondrial membrane contains ATP synthase (F0-F1 particles) and is selectively permeable, unlike the smooth, permeable outer membrane with porins."
+    },
+    {
+        question: "The 'self-replication' capability of mitochondria is most analogous to the division mechanism of which organism?",
+        options: [
+            "A human somatic cell",
+            "A yeast cell",
+            "A bacterium",
+            "A plant meristematic cell"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that mitochondria divide by fission, and this self-replication, along with other similarities, aligns with characteristics of bacteria as per the endosymbiosis theory."
+    },
+    {
+        question: "Camillo Golgi's discovery relates to an organelle predominantly involved in:",
+        options: [
+            "Energy production",
+            "Genetic information storage",
+            "Secretory product modification",
+            "Cytoskeletal support"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the Golgi complex was discovered by Camillo Golgi, and its major role is in processing cell secretions and modifying proteins."
+    },
+    {
+        question: "In plant cells, the Golgi complex plays a unique role in cell wall formation by contributing which structures during cytokinesis?",
+        options: [
+            "Microtubules",
+            "Cell plate enzymes",
+            "Phragmoplast vesicles",
+            "Lignin precursors"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that in plant cells, the Golgi complex produces vesicles containing cell wall synthesizing materials, which form the phragmoplast during cytokinesis."
+    },
+    {
+        question: "Beyond protein synthesis, the Rough Endoplasmic Reticulum (RER) also contributes to the cell's physical integrity through:",
+        options: [
+            "Calcium ion storage",
+            "Lipid metabolism",
+            "Mechanical support",
+            "Detoxification processes"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the Rough Endoplasmic Reticulum (RER) provides mechanical support to the cell."
+    },
+    {
+        question: "The distinguishing feature of the Rough Endoplasmic Reticulum (RER) when viewed under an electron microscope is the presence of:",
+        options: [
+            "Smooth cisternae",
+            "Associated Golgi vesicles",
+            "Ribosomes on its surface",
+            "Cristae-like folds"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the RER has ribosomes attached to its cytoplasmic surface, giving it a rough appearance under the electron microscope."
+    },
+    {
+        question: "A chromatid exhibiting a secondary constriction is primarily involved in the organization of which nuclear structure?",
+        options: [
+            "Centromere",
+            "Kinetochore",
+            "Nucleolus",
+            "Nuclear pore"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that a secondary constriction, also known as the nucleolar organizer, is responsible for forming nucleoli during interphase."
+    },
+    {
+        question: "Which mode of cell division is characteristic of eukaryotic organisms, but not prokaryotic?",
+        options: [
+            "Binary fission",
+            "Budding",
+            "Mitosis or Meiosis",
+            "Fragmentation"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that eukaryotic cells divide by mitosis or meiosis, whereas prokaryotic cells divide by binary fission."
+    },
+    {
+        question: "The perinuclear space is functionally located between which two cellular components?",
+        options: [
+            "Inner and outer nuclear membranes",
+            "Nuclear envelope and ER",
+            "Nucleoplasm and cytoplasm",
+            "Chromatin and nucleolus"
+        ],
+        correctAnswer: 0,
+        reasoning: "It's mentioned in Textbook theory that the nuclear envelope is a double membrane covering the nucleus, separated by a fluid-filled perinuclear space."
+    },
+    {
+        question: "Which component found in the nucleoplasm is crucial for DNA and RNA synthesis, specifically facilitating the formation of phosphodiester bonds?",
+        options: [
+            "Histone proteins",
+            "Free nucleotides",
+            "Non-histone proteins",
+            "Metal ions (Mg)"
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mentioned in Textbook theory that the nucleoplasm contains metal ions (Mg) for DNA and RNA synthesis, implying their role as cofactors for polymerases, which form phosphodiester bonds."
+    },
+    {
+        question: "The inner mitochondrial membrane's selective permeability is attributed to which characteristic?",
+        options: [
+            "Presence of porins",
+            "Absence of protein carriers",
+            "Lipid bilayer composition only",
+            "Lack of large channels"
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mentioned in Textbook theory that the inner membrane is selectively permeable, while the outer membrane is permeable due to porins. This implies the inner membrane lacks such large channels, enabling its selectivity."
+    },
+    {
+        question: "The distinct presence of 70S ribosomes in mitochondria, unlike the 80S ribosomes in the cytoplasm, is strong evidence for their:",
+        options: [
+            "Ancestral prokaryotic origin",
+            "Role in photosynthesis",
+            "Specialization in lipid synthesis",
+            "Regulation by nuclear genes"
+        ],
+        correctAnswer: 0,
+        reasoning: "It's mentioned in Textbook theory that 70S ribosomes in mitochondria are a similarity with bacteria, supporting the endosymbiosis theory of their ancestral prokaryotic origin."
+    },
+    {
+        question: "In highly secretory cells, the Golgi complex is noticeably abundant because of its role in:",
+        options: [
+            "Synthesizing new lipids",
+            "Detoxifying cellular waste",
+            "Modifying and packaging proteins",
+            "Generating ATP via oxidative phosphorylation"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the Golgi complex is abundant in secretory cells and its major role is processing cell secretions, which involves modifying and exporting proteins."
+    },
+    {
+        question: "The continuous network of cisternae that extends from the nuclear membrane throughout the cytoplasm in eukaryotic cells is defined as the:",
+        options: [
+            "Golgi complex",
+            "Mitochondrial network",
+            "Endoplasmic Reticulum",
+            "Plasma membrane"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the Endoplasmic Reticulum (ER) is an interconnecting network of cisternae that extends from the nuclear membrane to the plasma membrane throughout the cytoplasm."
+    },
+    {
+        question: "A unique feature of the outer nuclear membrane, linking it functionally to protein synthesis for secretion, is its:",
+        options: [
+            "Attachment to chromatin",
+            "Presence of ribosomes",
+            "Perinuclear space content",
+            "Role in lipid synthesis"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory that the outer nuclear membrane is covered with ribosomes and connected to the Endoplasmic Reticulum (ER), linking it to protein synthesis."
+    },
+    {
+        question: "The smooth, continuous nature of the outer mitochondrial membrane allows for the passage of many molecules due to the presence of:",
+        options: [
+            "ATP synthase",
+            "Cristae",
+            "Porins",
+            "Electron carriers"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the outer mitochondrial membrane is permeable to various molecules due to porins."
+    },
+    {
+        question: "Which structure acts as the attachment site for spindle microtubules, playing a direct role in chromosome movement?",
+        options: [
+            "Kinetochore",
+            "Centromere",
+            "Nucleolus",
+            "Chromatid tip"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory that the centromere acts as the attachment site for spindle microtubules, which is essential for chromosome movement during cell division."
+    },
+    {
+        question: "Archaea are characterized by the absence of which of the following?",
+        options: [
+            "Cell wall",
+            "Plasma membrane",
+            "Membrane-bound nucleus",
+            "Ribosomes"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that archaea are prokaryotic cells and thus lack a definite membrane-bound nucleus."
+    },
+    {
+        question: "The nuclear envelope is composed of a lipid bilayer and proteins, defining its fundamental structural nature. This structure is:",
+        options: [
+            "Single-layered",
+            "Triple-layered",
+            "Double-membraned",
+            "Proteinaceous only"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the nuclear envelope is a double membrane composed of lipid bilayer and proteins."
+    },
+    {
+        question: "A cell that is binucleate or multinucleate indicates a deviation from the typical single nucleus per cell. This suggests:",
+        options: [
+            "Abnormal ribosome formation",
+            "Unusual nuclear pore density",
+            "Variations in nuclear division or fusion",
+            "Deficiency in nucleoplasm"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory (Science Titbit) that some cells are binucleate (two nuclei) or multinucleate (many nuclei), implying variations in how nuclei form or fuse."
+    },
+    {
+        question: "The central fibrillar area of the nucleolus is primarily involved in the synthesis and processing of which nucleic acid?",
+        options: [
+            "DNA",
+            "mRNA",
+            "tRNA",
+            "rRNA"
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mentioned in Textbook theory that the nucleolus's central fibrillar area consists of rRNA and rDNA, indicating its involvement in rRNA synthesis."
+    },
+    {
+        question: "The intermembrane space of mitochondria would have a high concentration of protons, which drives ATP synthesis. This gradient is established by proteins located in the:",
+        options: [
+            "Outer mitochondrial membrane",
+            "Mitochondrial matrix",
+            "Inner mitochondrial membrane",
+            "Cristae lumen"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the electron transport chain proteins, which pump protons into the intermembrane space, are located in the inner mitochondrial membrane."
+    },
+    {
+        question: "The Golgi complex is the origin point for several other membrane-bound organelles, including:",
+        options: [
+            "Mitochondria and chloroplasts",
+            "Endoplasmic reticulum and ribosomes",
+            "Lysosomes and peroxisomes",
+            "Nucleus and nucleolus"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the Golgi complex is the origin of certain organelles like lysosomes, peroxisomes, and glyoxysomes."
+    },
+    {
+        question: "The ER forms an interconnected network of cisternae, providing a continuous internal environment. This network connects the nuclear membrane to the:",
+        options: [
+            "Mitochondrial outer membrane",
+            "Plasma membrane",
+            "Golgi trans-face",
+            "Nucleolus"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory that the Endoplasmic Reticulum (ER) is an interconnecting network of cisternae that extends from the nuclear membrane to the plasma membrane throughout the cytoplasm."
+    },
+    {
+        question: "If a cell's ability to synthesize phospholipids is severely impaired, which organelle's function would be most directly affected?",
+        options: [
+            "Rough ER",
+            "Nucleolus",
+            "Smooth ER",
+            "Mitochondria"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the Smooth Endoplasmic Reticulum (SER) functions in the synthesis of lipids, including phospholipids."
+    },
+    {
+        question: "A scientist observes chromatin as thin, thread-like structures. This observation suggests the cell is currently in which phase?",
+        options: [
+            "Prophase",
+            "Metaphase",
+            "Interphase",
+            "Anaphase"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that chromatin exists as a network of thin, thread-like structures during interphase, before condensing into chromosomes for cell division."
+    },
+    {
+        question: "Which of the following cellular components is characteristic of a eukaryotic cell, but absent in prokaryotes?",
+        options: [
+            "Ribosomes",
+            "Cytoskeleton",
+            "Cell wall",
+            "Plasma membrane"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory that eukaryotic cells possess a cytoskeleton, which is not listed as a component of prokaryotic cells."
+    },
+    {
+        question: "RNA molecules, ribosomal proteins, and DNA polymerase are all examples of materials exchanged across the nuclear envelope. This exchange is mediated by:",
+        options: [
+            "Simple diffusion across the membrane",
+            "Endocytosis at the nuclear envelope",
+            "Specialized nuclear pores",
+            "Direct cytoplasmic contact with chromatin"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that nuclear pores regulate nucleo-cytoplasmic exchange of materials like RNA, ribosomal proteins, and DNA polymerase."
+    },
+    {
+        question: "The transparent, semifluid ground substance of the nucleus, distinct in composition from the cytoplasm, is the:",
+        options: [
+            "Cytosol",
+            "Mitochondrial matrix",
+            "Nucleoplasm",
+            "Perinuclear fluid"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the nucleoplasm is the transparent, semifluid ground substance within the nucleus, differing slightly from cytoplasm."
+    },
+    {
+        question: "The primary function of cristae within the mitochondria is to:",
+        options: [
+            "Store genetic material",
+            "Increase surface area for ATP production",
+            "Regulate outer membrane permeability",
+            "Synthesize ribosomal proteins"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory that the inner mitochondrial membrane folds inwards to form cristae, which increase surface area, containing electron carriers and ATP synthase, thus enhancing ATP production."
+    },
+    {
+        question: "A cell type with a notably high metabolic rate and energy demand would likely exhibit an increased number of:",
+        options: [
+            "Nucleoli",
+            "Golgi cisternae",
+            "Mitochondria",
+            "Lysosomes"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that mitochondria increase in number, especially in metabolically active cells, due to their role in ATP generation."
+    },
+    {
+        question: "The concave side of the Golgi complex, where cisternae fragment into vesicles for export, is referred to as the:",
+        options: [
+            "Cis-face",
+            "Forming face",
+            "Trans-face",
+            "Receiving face"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the trans-face (maturing face) of the Golgi complex is concave and where cisternae break up into vesicles."
+    },
+    {
+        question: "Which organelle acts as a central hub for collecting, modifying, and exporting proteins synthesized in the Rough ER?",
+        options: [
+            "Nucleolus",
+            "Mitochondrion",
+            "Golgi complex",
+            "Smooth Endoplasmic Reticulum"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the Golgi complex collects proteins from the Rough ER, modifies them, and exports them in vesicles."
+    },
+    {
+        question: "The endoplasmic reticulum's role in carbohydrate metabolism, lipid synthesis, and detoxification is primarily attributed to its:",
+        options: [
+            "Ribosomes",
+            "Rough morphology",
+            "Smooth regions",
+            "Nuclear membrane connection"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the Smooth Endoplasmic Reticulum (SER) functions in carbohydrate metabolism, lipid synthesis, and detoxification."
+    },
+    {
+        question: "A typical chromosome, as seen during cell division, is characterized by two sister chromatids joined at the:",
+        options: [
+            "Secondary constriction",
+            "Telomere",
+            "Centromere",
+            "Kinetochore"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that a typical chromosome consists of two sister chromatids joined at the centromere (primary constriction)."
+    },
+    {
+        question: "Complex flagella and cilia, comprised of microtubules, are exclusive to which cell type?",
+        options: [
+            "Prokaryotic bacteria",
+            "Cyanobacteria",
+            "Eukaryotic cells",
+            "Archaea"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that eukaryotic cells possess complex flagella/cilia made of microtubules, whereas prokaryotes have simpler flagella."
+    },
+    {
+        question: "The outer membrane of the nuclear envelope is often associated with ribosomes and is structurally continuous with which other organelle?",
+        options: [
+            "Golgi complex",
+            "Mitochondrion",
+            "Endoplasmic Reticulum",
+            "Lysosome"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the outer membrane of the nuclear envelope is covered with ribosomes and connected to the Endoplasmic Reticulum (ER)."
+    },
+    {
+        question: "Free nucleotides are present in the nucleoplasm primarily to serve as precursors for the synthesis of:",
+        options: [
+            "Histone proteins",
+            "Ribosomal proteins",
+            "DNA and RNA",
+            "Lipids"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the nucleoplasm contains free nucleotides for DNA and RNA synthesis."
+    },
+    {
+        question: "A distinctive feature distinguishing prokaryotic flagella from eukaryotic flagella is their:",
+        options: [
+            "Presence of motor proteins",
+            "Composition of microtubules",
+            "Simpler structure and composition",
+            "Ability to propel the cell"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that prokaryotes have simpler flagella structures and composition compared to eukaryotes."
+    },
+    {
+        question: "The mitochondrial matrix contains its own set of genes. These are found on:",
+        options: [
+            "Linear chromosomes",
+            "Plasmid-like structures",
+            "Small circular DNA",
+            "RNA templates"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the mitochondrial matrix contains small circular DNA."
+    },
+    {
+        question: "The process of forming glycoproteins and lipoproteins largely occurs within the lumen of which organelle system?",
+        options: [
+            "Mitochondria",
+            "Nucleolus",
+            "Golgi complex",
+            "Lysosomes"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the Golgi complex is involved in the formation of conjugated molecules like glycoprotein and lipoprotein."
+    },
+    {
+        question: "If the Smooth ER's ability to transport cellular products, such as proteins from RER to Golgi, were compromised, what would be the immediate consequence?",
+        options: [
+            "Impaired ATP synthesis",
+            "Defective protein secretion",
+            "Excessive DNA replication",
+            "Loss of nuclear integrity"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory that the SER transports cellular products (e.g., proteins from RER to Golgi), so its impairment would directly affect protein secretion."
+    },
+    {
+        question: "The network of thin, thread-like structures composed of DNA and proteins, visible during interphase, is:",
+        options: [
+            "Chromosomes",
+            "Centromeres",
+            "Chromatin",
+            "Kinetochores"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that chromatin is a network of thin, thread-like structures composed of DNA and proteins, found in the nucleus during interphase."
+    },
+    {
+        question: "Which of these is explicitly *not* a membrane-bound organelle?",
+        options: [
+            "Endoplasmic Reticulum",
+            "Golgi complex",
+            "Nucleolus",
+            "Mitochondrion"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the nucleolus is a non-membrane-bound structure within the nucleoplasm."
+    },
+    {
+        question: "The regulated passage of signaling molecules and carbohydrates between the nucleus and cytoplasm occurs through:",
+        options: [
+            "Simple diffusion across the lipid bilayer",
+            "Channels formed by nuclear membrane proteins",
+            "Nuclear pores",
+            "Endoplasmic reticulum channels"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that nuclear pores regulate nucleo-cytoplasmic exchange of materials, including carbohydrates and signaling molecules."
+    },
+    {
+        question: "If the nucleoplasm lacked histone and non-histone proteins, which primary nuclear function would be severely affected?",
+        options: [
+            "Ribosome construction",
+            "ATP synthesis",
+            "DNA packaging and gene regulation",
+            "Nuclear pore formation"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the nucleoplasm contains histone and non-histone proteins. These proteins are crucial for DNA packaging into chromatin and regulating gene expression."
+    },
+    {
+        question: "Excess mitochondria in a cell are typically targeted for degradation by which other organelle?",
+        options: [
+            "Golgi complex",
+            "Nucleolus",
+            "Lysosomes",
+            "Smooth ER"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that excess mitochondria are digested by lysosomes."
+    },
+    {
+        question: "The formation of new cisternae in the Golgi complex primarily occurs at the face oriented towards the ER. This orientation is:",
+        options: [
+            "Trans-face",
+            "Maturing face",
+            "Cis-face",
+            "Vesicular face"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the cis-face (forming face) is convex and oriented towards the ER, where new cisternae are formed."
+    },
+    {
+        question: "Which of the following describes the fundamental structural unit of the Golgi complex?",
+        options: [
+            "Ribosomes",
+            "Mitochondrial matrix",
+            "Cisternae",
+            "Chromatin"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the Golgi complex consists of a stack of flattened, membrane-bound sacs called cisternae."
+    },
+    {
+        question: "The Rough Endoplasmic Reticulum is functionally critical for providing the necessary environment for:",
+        options: [
+            "Lipid synthesis",
+            "Carbohydrate metabolism",
+            "Protein translation and folding",
+            "Calcium ion storage"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the RER has ribosomes attached, making it primarily involved in protein synthesis (translation)."
+    },
+    {
+        question: "In the context of cell division, condensed and coiled chromatin fibers that become visible are referred to as:",
+        options: [
+            "Nucleosomes",
+            "Chromatin",
+            "Centromeres",
+            "Chromosomes"
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mentioned in Textbook theory that chromosomes are condensed and coiled chromatin fibers that become visible during cell division."
+    },
+    {
+        question: "Which specific ribosomal type is characteristic of eukaryotic cytoplasm?",
+        options: [
+            "60S",
+            "70S",
+            "80S",
+            "50S"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that eukaryotic cells possess 80S ribosomes."
+    },
+    {
+        question: "The nuclear envelope's outer membrane is studded with ribosomes, implying its direct involvement in:",
+        options: [
+            "DNA replication",
+            "RNA processing",
+            "Protein synthesis for ER/secretion",
+            "Maintaining nuclear shape"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the outer nuclear membrane is covered with ribosomes, and is connected to the ER, indicating its role in protein synthesis, particularly for the ER and secretory pathway."
+    },
+    {
+        question: "What distinguishes the nucleoplasm from the cytoplasm in terms of macromolecular content?",
+        options: [
+            "Absence of proteins in nucleoplasm",
+            "Presence of only free nucleotides in cytoplasm",
+            "Differentiation in histone and non-histone proteins",
+            "Exclusive presence of RNA polymerase in cytoplasm"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the nucleoplasm contains histone and non-histone proteins, differing slightly from cytoplasm."
+    },
+    {
+        question: "The nucleolus is absent during which specific phase of the cell cycle?",
+        options: [
+            "Interphase",
+            "Prophase of mitosis",
+            "G1 phase",
+            "S phase"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mentioned in Textbook theory that the nucleolus disappears during cell division (including prophase) and appears during interphase."
+    },
+    {
+        question: "The extensive folding of the inner mitochondrial membrane serves to optimize:",
+        options: [
+            "Intermembrane space volume",
+            "Enzyme compartmentalization for glycolysis",
+            "Surface area for electron transport and ATP synthesis",
+            "Permeability to large molecules"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mentioned in Textbook theory that the inner mitochondrial membrane is folded inwards to form cristae, which increase surface area, vital for the electron transport chain and ATP synthase."
+    }
+];
+
+// Constants
+const QUIZ_ACCESS_CODE = "PreMium-A-12345";
+const DEV_ACCESS_CODE = "Dev-PDA-001";
+const ACADEMY_NAME = "WHITE COAT WORRIORS ";
+const QUIZ_SUBJECT = "Biology ";
+const WEBSITE_LINK = "https://premiumdoctoracademy.com";
+const WHATSAPP_CONTACT = "03287743851";
+const WHATSAPP_COMMUNITY = "https://whatsapp.com/channel/0029VaFCIU6EquiOlXWcNR1X";
+const TIME_PER_MCQ = 60;
+const MARK_PER_MCQ = 1;
+const NEGATIVE_MARKING = 0;
+
+// Global state variables
+let currentQuizId = 'WCW-BIO-0015';
+let quizData = quizData_WCW_BIO_0015;
+let currentQuestion = 0;
+let userAnswers = Array(quizData.length).fill(null);
+let timeLeft;
+let questionTimeLeft;
+let totalTimeInterval;
+let questionTimeInterval;
+let studentData = {};
+let studentAccessCode = "";
+
+// DOM elements
+const questionNavEl = document.getElementById('question-nav');
+const questionTextEl = document.getElementById('question-text');
+const optionsContainerEl = document.getElementById('options-container');
+const reasoningEl = document.getElementById('reasoning');
+const reasoningTextEl = document.getElementById('reasoning-text');
+const quizTitleEl = document.getElementById('quiz-title');
+const quizSubjectEl = document.getElementById('quiz-subject');
+const perMcqTimeEl = document.getElementById('per-mcq-time');
+const totalTimerEl = document.getElementById('timer');
+const questionTimerEl = document.getElementById('question-timer');
+const quizProgressEl = document.getElementById('quiz-progress');
+const studentInfoTable = document.getElementById('student-info-table');
+const quizResultsTable = document.getElementById('quiz-results-table');
+const allMcqsList = document.getElementById('all-mcqs-list');
+const devPasswordInput = document.getElementById('developerPassword');
+const devErrorBox = document.getElementById('dev-error-box');
+const quizAccessCodeInput = document.getElementById('quizAccessCode');
+const quizAccessErrorBox = document.getElementById('quiz-error-box');
+const toggleDevPasswordIcon = document.getElementById('toggleDeveloperPassword');
+const toggleQuizCodeIcon = document.getElementById('toggleQuizAccessCode');
+const websiteLinkEl = document.getElementById('website-link');
+const whatsappContactLinkEl = document.getElementById('whatsapp-contact-link');
+const whatsappCommunityLinkEl = document.getElementById('whatsapp-community-link');
+const reasoningBtn = document.getElementById('reasoning-btn');
+const quizNotificationEl = document.getElementById('quiz-notification');
+const notificationTitleEl = document.getElementById('notification-title');
+const notificationMessageEl = document.getElementById('notification-message');
+const notificationYesBtn = document.getElementById('notification-yes');
+const notificationNoBtn = document.getElementById('notification-no');
+const correctCountEl = document.getElementById('correct-count');
+const incorrectCountEl = document.getElementById('incorrect-count');
+const unansweredCountEl = document.getElementById('unanswered-count');
+const performanceFillEl = document.getElementById('performance-fill');
+
+
+/**
+ * @description Sends data to the Google Apps Script endpoint.
+ * @param {object} data - The payload containing type ('registration' or 'quiz_result') and data.
+ */
+function sendDataToSheet(data) {
+    if (!SHEET_SCRIPT_URL || SHEET_SCRIPT_URL.includes('YOUR_DEPLOYED_WEB_APP_URL')) {
+        console.error('SHEET_SCRIPT_URL is not configured. Data not sent to Google Sheet.');
+        return Promise.resolve({ success: false, message: 'Script URL not configured.' });
+    }
+
+    return fetch(SHEET_SCRIPT_URL, {
+        method: 'POST',
+        // 'no-cors' is necessary for Apps Script to accept cross-origin POST requests from a web page
+        mode: 'no-cors',
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        // Cannot read response body with 'no-cors', assume request was sent successfully
+        return { success: true, message: 'Request sent to Google Script.' };
+    })
+    .catch(error => {
+        console.error('Sheet Data Send Error:', error);
+        return { success: false, message: 'Failed to send request to Google Script.' };
+    });
+}
+
+
+// Initialization
+document.addEventListener('DOMContentLoaded', () => {
+    const storedStudentData = localStorage.getItem('studentData');
+    if (storedStudentData) {
+        studentData = JSON.parse(storedStudentData);
+        document.getElementById('studentName').value = studentData['Student Name'] || '';
+        document.getElementById('fatherName').value = studentData['Father Name'] || '';
+        document.getElementById('email').value = studentData['Email'] || '';
+        document.getElementById('mobile').value = studentData['Mobile'] || '';
+        document.getElementById('city').value = studentData['City'] || '';
+    }
+    const storedCode = localStorage.getItem('studentAccessCode');
+    if (storedCode) {
+        studentAccessCode = storedCode;
+    }
+    
+    showPage('signin-page');
+    
+    if (toggleDevPasswordIcon) toggleDevPasswordIcon.addEventListener('click', () => togglePasswordVisibility('developerPassword', 'toggleDeveloperPassword'));
+    if (toggleQuizCodeIcon) toggleQuizCodeIcon.addEventListener('click', () => togglePasswordVisibility('quizAccessCode', 'toggleQuizAccessCode'));
+});
+
+function showQuizNotification(title, message, type = 'info') {
+    const allowedNotifications = ['Registration Successful', 'Access Granted', 
+                                 'Quiz Completed!', 'Quiz Reset', 'Registration Error', 'Submission Error', 'Registration Warning'];
+    
+    if (!allowedNotifications.includes(title)) {
+        return;
+    }
+    
+    notificationTitleEl.textContent = title;
+    notificationMessageEl.textContent = message;
+    
+    quizNotificationEl.classList.remove('warning', 'error');
+    
+    if (type === 'warning') {
+        quizNotificationEl.classList.add('warning');
+    } else if (type === 'error') {
+        quizNotificationEl.classList.add('error');
+    }
+    
+    quizNotificationEl.classList.add('show');
+    
+    setTimeout(() => {
+        if (quizNotificationEl.classList.contains('show')) {
+            hideQuizNotification();
+        }
+    }, 5000);
+}
+
+function hideQuizNotification() {
+    quizNotificationEl.classList.remove('show');
+}
+
+function showPage(pageId) {
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => page.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+    document.querySelectorAll('.error-box, .success-box').forEach(el => el.style.display = 'none');
+}
+
+function togglePasswordVisibility(inputID, iconID) {
+    const passwordInput = document.getElementById(inputID);
+    const toggleIcon = document.getElementById(iconID);
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
+    } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+    }
+}
+
+function showQuizAccessForm() {
+    document.getElementById('quiz-access-form').style.display = 'flex';
+    document.getElementById('developer-access-form').style.display = 'none';
+}
+
+function showDeveloperAccessForm() {
+    document.getElementById('developer-access-form').style.display = 'flex';
+    document.getElementById('quiz-access-form').style.display = 'none';
+}
+
+function showRegistrationPage() {
+    showPage('registration-page');
+}
+
+// Registration Handler
+function generateAccessCode(studentName, fatherName) {
+    const studentInitials = studentName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const fatherInitials = fatherName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const uniqueId = Math.random().toString(36).substring(2, 7).toUpperCase();
+
+    return `${ACADEMY_NAME.replace(/\s+/g, '-')}-${studentInitials}${fatherInitials}-${uniqueId}`;
+}
+
+function handleRegistration() {
+    const sName = document.getElementById('studentName').value.trim();
+    const fName = document.getElementById('fatherName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const city = document.getElementById('city').value.trim();
+    
+    if (!sName || !fName || !email || !mobile || !city) {
+        showQuizNotification('Registration Error', 'Please fill in all the registration details.', 'error');
+        return;
+    }
+    
+    // Generate access code
+    const generatedCode = generateAccessCode(sName, fName);
+    studentAccessCode = generatedCode;
+
+    studentData = {
+        'Student Name': sName,
+        'Father Name': fName,
+        'Email': email,
+        'Mobile': mobile,
+        'City': city
+    };
+
+    // --- NEW: SEND REGISTRATION DATA TO GOOGLE SHEET ---
+    const registrationDataToSend = {
+        type: 'registration',
+        accessCode: generatedCode,
+        studentName: sName,
+        fatherName: fName,
+        email: email,
+        mobile: mobile,
+        city: city
+    };
+    
+    sendDataToSheet(registrationDataToSend)
+        .then(response => {
+            console.log('Sheet Registration Response:', response);
+            showQuizNotification('Registration Successful', `Your code: ${generatedCode}. Data submitted to sheet.`, 'info');
+        })
+        .catch(error => {
+            console.error('Sheet Registration Error:', error);
+            showQuizNotification('Registration Warning', `Registration saved locally, but sheet submission failed.`, 'warning');
+        });
+    // ----------------------------------------------------
+    
+    // Store data locally
+    localStorage.setItem('studentAccessCode', generatedCode);
+    localStorage.setItem('studentData', JSON.stringify(studentData));
+    
+    const registrations = JSON.parse(localStorage.getItem('wcwRegistrations') || '[]');
+    registrations.push({
+        ...studentData,
+        accessCode: generatedCode,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwRegistrations', JSON.stringify(registrations));
+    
+    
+    // Start the quiz after registration
+    startQuiz('WCW-BIO-0015', 'Student', generatedCode);
+}
+
+// Quiz Access Handler
+function checkDeveloperPassword() {
+    devErrorBox.style.display = 'none';
+    if (devPasswordInput.value === DEV_ACCESS_CODE) {
+        showQuizNotification('Access Granted', 'Welcome! You have successfully logged in as a developer.', 'info');
+        startQuiz('WCW-BIO-0015', 'Developer', DEV_ACCESS_CODE);
+    } else {
+        devErrorBox.style.display = 'block';
+    }
+}
+
+function accessQuiz(inputCode) {
+    const errorBox = document.getElementById('quiz-error-box');
+    errorBox.style.display = 'none';
+    
+    const storedStudentCode = localStorage.getItem('studentAccessCode');
+    
+    if (inputCode === QUIZ_ACCESS_CODE || inputCode === DEV_ACCESS_CODE || inputCode === storedStudentCode) {
+        showQuizNotification('Access Granted', 'Welcome! You can now start the quiz.', 'info');
+        startQuiz('WCW-BIO-0015', 'Student', inputCode);
+    } else {
+        errorBox.style.display = 'block';
+    }
+}
+
+function startQuiz(quizId, userType, code) {
+    currentQuizId = quizId;
+    quizData = quizData_WCW_BIO_0015;
+    
+    // Always start fresh - no progress restoration
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    questionTimeLeft = TIME_PER_MCQ;
+    
+    localStorage.setItem('lastAccessCode', code);
+
+    showPage('quiz-page');
+    initQuiz();
+}
+
+// Quiz Logic
+function initQuiz() {
+    quizSubjectEl.textContent = QUIZ_SUBJECT;
+    perMcqTimeEl.textContent = Math.floor(TIME_PER_MCQ / 60);
+    
+    websiteLinkEl.href = WEBSITE_LINK;
+    whatsappContactLinkEl.href = 'https://wa.me/' + WHATSAPP_CONTACT;
+    whatsappCommunityLinkEl.href = WHATSAPP_COMMUNITY;
+    
+    quizTitleEl.textContent = `Test - ID: ${currentQuizId}`;
+    renderQuestionNav();
+    renderQuestion();
+
+    if (totalTimeInterval) clearInterval(totalTimeInterval);
+    if (questionTimeInterval) clearInterval(questionTimeInterval);
+    
+    totalTimeInterval = setInterval(updateTotalTimer, 1000);
+    questionTimeInterval = setInterval(updateQuestionTimer, 1000);
+}
+
+function updateTotalTimer() {
+    if (timeLeft > 0) {
+        timeLeft--;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        totalTimerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    } else {
+        clearInterval(totalTimeInterval);
+        submitTest(true);
+    }
+}
+
+function updateQuestionTimer() {
+    if (questionTimeLeft > 0) {
+        questionTimeLeft--;
+        questionTimerEl.textContent = `${questionTimeLeft}`;
+    } else {
+        questionTimeLeft = TIME_PER_MCQ;
+        navigateQuestion('next');
+    }
+}
+
+function renderQuestionNav() {
+    questionNavEl.innerHTML = '';
+    quizData.forEach((_, index) => {
+        const navItem = document.createElement('div');
+        navItem.classList.add('question-nav-item');
+        navItem.textContent = index + 1;
+        navItem.onclick = () => navigateQuestion(index);
+        
+        if (index === currentQuestion) {
+            navItem.classList.add('current');
+        } else if (userAnswers[index] !== null) {
+            navItem.classList.add('solved');
+        } else if (userAnswers.slice(0, index).some(ans => ans !== null) || index < currentQuestion) {
+             navItem.classList.add('visited');
+        }
+        
+        questionNavEl.appendChild(navItem);
+    });
+    updateProgressBar();
+}
+
+function updateProgressBar() {
+    const solvedCount = userAnswers.filter(answer => answer !== null).length;
+    const progress = (solvedCount / quizData.length) * 100;
+    quizProgressEl.style.width = `${progress}%`;
+}
+
+function renderQuestion() {
+    reasoningEl.style.display = 'none';
+    reasoningBtn.classList.add('disabled');
+    const question = quizData[currentQuestion];
+    questionTextEl.textContent = `${currentQuestion + 1}. ${question.question}`;
+    
+    optionsContainerEl.innerHTML = '';
+    question.options.forEach((option, index) => {
+        const optionEl = document.createElement('div');
+        optionEl.classList.add('option');
+        optionEl.textContent = option;
+        
+        const isAnswered = userAnswers[currentQuestion] !== null;
+
+        if (!isAnswered) {
+            optionEl.onclick = () => selectOption(index);
+        } else {
+            if (index === question.correctAnswer) {
+                optionEl.classList.add('correct');
+            } else if (index === userAnswers[currentQuestion]) {
+                optionEl.classList.add('incorrect');
+            }
+        }
+        
+        if (userAnswers[currentQuestion] === index) {
+            optionEl.classList.add('selected');
+        }
+
+        optionsContainerEl.appendChild(optionEl);
+    });
+    
+    questionTimeLeft = TIME_PER_MCQ;
+    questionTimerEl.textContent = `${questionTimeLeft}`;
+    renderQuestionNav();
+    
+    if (userAnswers[currentQuestion] !== null) {
+        reasoningBtn.classList.remove('disabled');
+    }
+}
+
+function selectOption(optionIndex) {
+    const question = quizData[currentQuestion];
+    userAnswers[currentQuestion] = optionIndex;
+    
+    reasoningBtn.classList.remove('disabled');
+    
+    const options = optionsContainerEl.querySelectorAll('.option');
+    options.forEach((option, index) => {
+        option.onclick = null;
+        option.classList.remove('selected', 'correct', 'incorrect');
+        
+        if (index === question.correctAnswer) {
+            option.classList.add('correct');
+        } else if (index === optionIndex) {
+            option.classList.add('incorrect');
+        }
+        
+        if (index === optionIndex) {
+             option.classList.add('selected');
+        }
+    });
+
+    renderQuestionNav();
+    
+    setTimeout(() => {
+        navigateQuestion('next');
+    }, 800);
+}
+
+function navigateQuestion(direction) {
+    const totalQuestions = quizData.length;
+    let nextIndex;
+
+    if (typeof direction === 'number') {
+        nextIndex = direction;
+    } else if (direction === 'next') {
+        nextIndex = (currentQuestion + 1) % totalQuestions;
+    } else if (direction === 'prev') {
+        nextIndex = (currentQuestion - 1 + totalQuestions) % totalQuestions;
+    } else {
+        return;
+    }
+
+    if (nextIndex === currentQuestion) return;
+    
+    currentQuestion = nextIndex;
+    renderQuestion();
+}
+
+function toggleReasoning() {
+    if (reasoningBtn.classList.contains('disabled')) return;
+    
+    const question = quizData[currentQuestion];
+    if (reasoningEl.style.display === 'block') {
+        reasoningEl.style.display = 'none';
+    } else {
+        reasoningTextEl.textContent = question.reasoning;
+        reasoningEl.style.display = 'block';
+    }
+}
+
+function submitTest(isTimeout = false) {
+    if (!isTimeout && !confirm('Are you sure you want to submit the quiz?')) {
+        return;
+    }
+    
+    clearInterval(totalTimeInterval);
+    clearInterval(questionTimeInterval);
+
+    let correct = 0;
+    let incorrect = 0;
+    let unanswered = 0;
+
+    quizData.forEach((question, index) => {
+        if (userAnswers[index] === null) {
+            unanswered++;
+        } else if (userAnswers[index] === question.correctAnswer) {
+            correct++;
+        } else {
+            incorrect++;
+        }
+    });
+
+    const totalQuestions = quizData.length;
+    const totalScore = (correct * MARK_PER_MCQ) - (incorrect * NEGATIVE_MARKING);
+    const totalMarks = totalQuestions * MARK_PER_MCQ;
+
+    correctCountEl.textContent = correct;
+    incorrectCountEl.textContent = incorrect;
+    unansweredCountEl.textContent = unanswered;
+    
+    const performancePercentage = (correct / totalQuestions) * 100;
+    performanceFillEl.style.width = `${performancePercentage}%`;
+
+    const savedStudentData = JSON.parse(localStorage.getItem('studentData') || '{}');
+    const lastAccessCode = localStorage.getItem('lastAccessCode') || 'N/A';
+    
+    let studentInfoHtml = '';
+    for (const [key, value] of Object.entries(savedStudentData)) {
+        studentInfoHtml += `<tr><td>${key}</td><td>${value}</td></tr>`;
+    }
+    studentInfoHtml += `<tr><td>Access Code Used</td><td>${lastAccessCode}</td></tr>`;
+    studentInfoTable.innerHTML = studentInfoHtml;
+
+    quizResultsTable.innerHTML = `
+        <tr><td>Quiz ID</td><td>${currentQuizId}</td></tr>
+        <tr><td>Total Questions</td><td>${totalQuestions}</td></tr>
+        <tr><td>Correct Answers</td><td>${correct}</td></tr>
+        <tr><td>Incorrect Answers</td><td>${incorrect}</td></tr>
+        <tr><td>Unanswered</td><td>${unanswered}</td></tr>
+        <tr><td>Your Score</td><td>${totalScore} / ${totalMarks}</td></tr>
+    `;
+
+    // --- NEW: SEND QUIZ RESULTS TO GOOGLE SHEET ---
+    if (lastAccessCode && lastAccessCode !== 'N/A') {
+        const resultsDataToSend = {
+            type: 'quiz_result',
+            accessCode: lastAccessCode,
+            quizId: currentQuizId,
+            totalQuestions: totalQuestions,
+            correct: correct,
+            incorrect: incorrect,
+            unanswered: unanswered,
+            totalScore: totalScore,
+            totalMarks: totalMarks,
+            studentName: savedStudentData['Student Name'] || 'Unknown' 
+        };
+
+        sendDataToSheet(resultsDataToSend)
+            .then(response => {
+                console.log('Sheet Results Update Response:', response);
+            })
+            .catch(error => {
+                console.error('Sheet Results Update Error:', error);
+                showQuizNotification('Submission Error', 'Failed to send results to the server sheet.', 'error');
+            });
+    }
+    // ----------------------------------------------------
+
+
+    const results = JSON.parse(localStorage.getItem('wcwQuizResults') || '[]');
+    results.push({
+        studentName: savedStudentData['Student Name'] || 'Unknown',
+        accessCode: lastAccessCode,
+        quizId: currentQuizId,
+        totalQuestions: totalQuestions,
+        correct: correct,
+        incorrect: incorrect,
+        unanswered: unanswered,
+        totalScore: totalScore,
+        totalMarks: totalMarks,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwQuizResults', JSON.stringify(results));
+    
+    showQuizNotification('Quiz Completed!', `Your score: ${totalScore}/${totalMarks}. Check the results page for details.`, 'info');
+    
+    showPage('results-page');
+}
+
+function restartTest() {
+    if (confirm('Are you sure you want to retake the full test? Your current progress will be lost.')) {
+        quizData = quizData_WCW_BIO_0015;
+        currentQuestion = 0;
+        userAnswers = Array(quizData.length).fill(null);
+        timeLeft = quizData.length * TIME_PER_MCQ;
+        
+        showPage('quiz-page');
+        initQuiz();
+    }
+}
+
+function retakeIncorrect() {
+    const incorrectIndices = quizData.map((question, index) => {
+        const isIncorrect = userAnswers[index] !== null && 
+                            userAnswers[index] !== question.correctAnswer;
+        return isIncorrect ? index : -1;
+    }).filter(index => index !== -1);
+    
+    if (incorrectIndices.length === 0) {
+        showQuizNotification('No Incorrect Questions', 'You have no incorrect questions to retake!', 'info');
+        return;
+    }
+    
+    quizData = incorrectIndices.map(index => quizData_WCW_BIO_0015[index]);
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    
+    showPage('quiz-page');
+    initQuiz();
+}
+
+function viewAllMcqs() {
+    allMcqsList.innerHTML = '';
+    quizData_WCW_BIO_0015.forEach((question, index) => {
+        const mcqItem = document.createElement('div');
+        mcqItem.classList.add('all-mcq-item');
+        mcqItem.innerHTML = `
+            <div class="question-text">${index + 1}. ${question.question}</div>
+            <div class="all-mcq-options">
+                ${question.options.map((option, optIndex) => `
+                    <div class="all-mcq-option ${optIndex === question.correctAnswer ? 'correct' : ''}">
+                        ${option}
+                    </div>
+                `).join('')}
+            </div>
+            <div class="all-mcq-reasoning">
+                <strong>Reasoning:</strong> ${question.reasoning}
+            </div>
+        `;
+        allMcqsList.appendChild(mcqItem);
+    });
+    showPage('all-mcqs-page');
+}</script>
